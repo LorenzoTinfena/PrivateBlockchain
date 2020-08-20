@@ -1,9 +1,9 @@
 <?php
 class Blockchain
 {
-    private PDO $db;
-    public array $table;
-    public string $tableName;
+    private $db;
+    public $table;
+    public $tableName;
     public function __construct(PDO $db, string $tableName)
     {
         //FETCH DATA
@@ -20,11 +20,11 @@ class Blockchain
         //ADD NEW BLOCK
         $valueHashed = BlockChain::sha256($value);
         $timeStamp = date("Y-m-d H:i:s");
-        $query = "INSERT INTO $this->tableName (`value`, `value_hashed`, `hash`, `time_stamp`) VALUES
+        $query = "INSERT INTO $this->tableName (`value`, `value_hashed`, `time_stamp`, `hash`) VALUES
         ('$value',
-        '$timeStamp','" . 
-        $this->ComputeHash($valueHashed, $timeStamp) . "', 
-        '$valueHashed')";
+        '$valueHashed', 
+        '$timeStamp','" .
+        $this->ComputeHash($valueHashed, $timeStamp) . "')";
 
         $stmt = $this->db->prepare($query);
         if (!$stmt)
@@ -35,12 +35,12 @@ class Blockchain
     private function ComputeHash(string $valueHashed, string $timeStamp)
     {
         //FETCH LAST BLOCK
-        $query = "SELECT Hash FROM $this->tableName ORDER BY TimeStamp DESC LIMIT 1";
+        $query = "SELECT hash FROM $this->tableName ORDER BY time_stamp DESC LIMIT 1";
         $stmt = $this->db->prepare($query);
         if (!$stmt)
-            die("Error preparing db");
+            die("Error preparing db fet");
         if (!$stmt->execute())
-            die("Error quering db");
+            die("Error quering db fet");
         $row = $stmt->fetch(PDO::FETCH_UNIQUE);
         if (!$row)
             die("Eroor fetching last row");
