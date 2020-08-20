@@ -52,11 +52,3 @@ class Blockchain
         return hash("sha256", $value);
     }
 }
-
-/*
-DB TABLE FORMAT
-    Value: text => text of the value
-    TimeStamp: timestamp => date of the timestamp of the block
-    Hash: tinytext => sha256(ValueHashed + TimeStamp + prev Hash)
-    ValueHashed: tinytext => sha256(Value)
-    */
