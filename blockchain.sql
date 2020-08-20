@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Aug 20, 2020 at 12:43 PM
+-- Generation Time: Aug 20, 2020 at 01:14 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.9
 
@@ -24,24 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blockchaintable`
+-- Table structure for table `blockchain`
 --
 
-DROP TABLE IF EXISTS `blockchaintable`;
-CREATE TABLE IF NOT EXISTS `blockchaintable` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Value` text COLLATE utf8_bin NOT NULL,
-  `ValueHashed` tinytext COLLATE utf8_bin NOT NULL,
-  `TimeStamp` timestamp NULL DEFAULT NULL,
-  `Hash` tinytext COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`ID`)
+DROP TABLE IF EXISTS `blockchain`;
+CREATE TABLE IF NOT EXISTS `blockchain` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `value` text COLLATE utf8_bin NOT NULL,
+  `value_hashed` tinytext COLLATE utf8_bin NOT NULL,
+  `time_stamp` timestamp NULL DEFAULT NULL,
+  `hash` tinytext COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `blockchaintable`
+-- Dumping data for table `blockchain`
 --
 
-INSERT INTO `blockchaintable` (`ID`, `Value`, `ValueHashed`, `TimeStamp`, `Hash`) VALUES
+INSERT INTO `blockchain` (`id`, `value`, `value_hashed`, `time_stamp`, `hash`) VALUES
 (1, 'ORIGIN', '7e84f9243bc216adb33eb87aff06d0ace3ccfcea7d736a0b15b8d71a1cb35990', '2020-08-17 10:16:31', '58afd8c78e8ac2e84a4a3801ab9793617a8f5c1d13621cab9c611971cee1977e');
 COMMIT;
 
