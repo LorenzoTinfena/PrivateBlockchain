@@ -16,3 +16,6 @@ The value in a block is hashed and stored in a variable called ValueHashed, whic
     ValueHashed: sha256(Value)
     TimeStamp: date of the timestamp of the block
     Hash: sha256(ValueHashed + TimeStamp + prev Hash)
+
+
+see also a web implementation http://proofit.ml/
