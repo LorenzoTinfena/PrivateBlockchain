@@ -20,7 +20,7 @@ class Blockchain
         //ADD NEW BLOCK
         $valueHashed = BlockChain::sha256($value);
         $timeStamp = date("Y-m-d H:i:s");
-        $query = "INSERT INTO $this->tableName (`Value`,`TimeStamp`, `Hash`, `ValueHashed`) VALUES
+        $query = "INSERT INTO $this->tableName (`value`, `value_hashed`, `hash`, `time_stamp`) VALUES
         ('$value',
         '$timeStamp','" . 
         $this->ComputeHash($valueHashed, $timeStamp) . "', 
@@ -45,7 +45,7 @@ class Blockchain
         if (!$row)
             die("Eroor fetching last row");
         //HASH
-        return BlockChain::sha256($valueHashed . $timeStamp . $row["Hash"]);
+        return BlockChain::sha256($valueHashed . $timeStamp . $row["hash"]);
     }
     private static function sha256($value)
     {
